@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import axios from 'axios';
@@ -9,11 +9,16 @@ import {
   SearchResults
 } from './components';
 
+import {
+  fetchCards,
+} from './api';
+
 const App = () => {
+  const [results, setResults] = useState([]);
   return (
     <div id="app">
-      <SearchBar />
-      <SearchResults />
+      <SearchBar setResults={ setResults } />
+      <SearchResults results={ results } />
       <DeckList />
     </div>
   );
